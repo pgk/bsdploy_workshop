@@ -1,0 +1,2 @@
+ipnat_rules:
+    - "rdr em0 {{ ansible_em0.ipv4[0].address }}/32 port 80 -> {{ hostvars['jailhost-webserver']['ploy_ip'] }} port 80"

@@ -1,0 +1,12 @@
+---
+- hosts: jailhost
+  user: root
+  roles:
+    - dhcp_host
+    - jails_host
+  tasks:
+    - name: ensure ZFS file systems are in place
+      zfs: name={{ item }} state=present
+      with_items:
+      - tank/htdocs
+      tags: zfs-layout

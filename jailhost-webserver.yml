@@ -1,0 +1,9 @@
+---
+- hosts: jailhost-webserver
+  tasks:
+    - name: install nginx
+      pkgng: name=nginx state=present
+    - name: enable nginx at startup time
+      lineinfile: dest=/etc/rc.conf state=present line='nginx_enable=YES' create=yes
+    - name: make sure nginx is running or reloaded
+      service: name=nginx state=restarted
